@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>images/demolition.png</file>
+        <file>images/flappybird.jpg</file>
+        <file>images/logo.png</file>
+        <file>images/pong.jpg</file>
+    </qresource>
+    <qresource prefix="/flappybird">
+        <file>FlappyBird/images/background-day.png</file>
+        <file>FlappyBird/images/base.png</file>
+        <file>FlappyBird/images/gameover.png</file>
+        <file>FlappyBird/images/message.png</file>
+        <file>FlappyBird/images/pipe-green.png</file>
+        <file>FlappyBird/images/yellowbird-downflap.png</file>
+        <file>FlappyBird/images/yellowbird-midflap.png</file>
+        <file>FlappyBird/images/yellowbird-upflap.png</file>
+    </qresource>
+</RCC>
