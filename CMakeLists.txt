@@ -8,7 +8,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # QtCreator supports the following variables for Android, which are identical to qmake Android variables.
@@ -30,10 +30,7 @@ find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Widgets REQUIRED)
 set(PROJECT_SOURCES
         src/main.cpp
         src/mainwindow.cpp
-        src/mainwindow.h
-        src/mainwindow.ui
         src/game.cpp
-        src/game.h
         Demolition/demolition.cpp
         FlappyBird/background.cpp
         FlappyBird/flappybird.cpp
@@ -41,6 +38,12 @@ set(PROJECT_SOURCES
         FlappyBird/obstacle.cpp
         FlappyBird/score.cpp
         Pong/pong.cpp
+
+)
+
+set(PROJECT_HEADERS
+        src/mainwindow.h
+        src/game.h
         Demolition/demolition.h
         FlappyBird/background.h
         FlappyBird/flappybird.h
@@ -48,28 +51,40 @@ set(PROJECT_SOURCES
         FlappyBird/player.h
         FlappyBird/score.h
         Pong/pong.h
+
+)
+
+set(PROJECT_UI
+        src/mainwindow.ui
         Demolition/demolition.ui
         FlappyBird/flappybird.ui
         Pong/pong.ui
 )
 
-set(RESOURCES rsc.qrc)
+set(PROJECT_RESOURCES rsc.qrc)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(GameSpace
         MANUAL_FINALIZATION
         ${PROJECT_SOURCES}
-        ${RESOURCES}
+        ${PROJECT_HEADERS}
+        ${PROJECT_UI}
+        ${PROJECT_RESOURCES}
     )
 else()
     if(ANDROID)
         add_library(GameSpace SHARED
             ${PROJECT_SOURCES}
-            ${RESOURCE}
+            ${PROJECT_HEADERS}
+            ${PROJECT_UI}
+            ${PROJECT_RESOURCE}
         )
     else()
         add_executable(GameSpace
             ${PROJECT_SOURCES}
+            ${PROJECT_HEADERS}
+            ${PROJECT_UI}
+            ${PROJECT_RESOURCES}
         )
     endif()
 endif()
